@@ -13,3 +13,9 @@ def twitter():
 @twitteradv_app.route('/facebook')
 def facebook():
 	return render_template('facebook.html')
+
+@twitteradv_app.route('/instagram')
+def instagram():
+	return render_template('instagram.html')
+
+
