@@ -27,9 +27,10 @@ def twitter():
 def facebook():
 	return render_template('facebook.html')
 
-# @t_app.route('/instagram')
-# def instagram():
-# 	return render_template('instagram.html')
+########################################
+###  Instagram Section
+###
+#######################################
 
 @t_app.route('/instagram')
 def user_photos():
@@ -74,6 +75,14 @@ def instagram_callback():
 
 	else:
 		return "Uhoh no code provided"
+# 
+# @t_app.route('/instagram/mostliked')
+# def most_liked_photo():
+
+########################################
+###  End Instagram Section
+###
+#######################################
 
 # @t_app.errorhandler(404)
 # def page_not_found(error):
