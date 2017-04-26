@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/simon/programming/python/python-proj/venv/bin/python
+=======
+#!/home/andrewa/Documents/twitterproj/venv/bin/python
+>>>>>>> dcc6b9b54abf8a613d6c564c26cd1025196cdaf3
 
 # -*- coding: utf-8 -*-
 import re

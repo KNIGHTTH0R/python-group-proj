@@ -13,3 +13,7 @@ def twitter():
 @t_app.route('/facebook')
 def facebook():
 	return render_template('facebook.html')
+
+@t_app.route('/instagram')
+def instagram():
+	return render_template('instagram.html')
