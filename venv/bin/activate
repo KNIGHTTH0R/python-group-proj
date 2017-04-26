@@ -40,11 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-<<<<<<< HEAD
 VIRTUAL_ENV="/home/simon/programming/python/python-proj/venv"
-=======
-VIRTUAL_ENV="/home/andrewa/Documents/twitterproj/venv"
->>>>>>> dcc6b9b54abf8a613d6c564c26cd1025196cdaf3
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
