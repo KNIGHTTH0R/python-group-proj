@@ -1,3 +1,3 @@
 #!venv/bin/python
-from app import twitteradv_app
-twitteradv_app.run(debug=True)
+from app import t_app
+t_app.run(debug=True)
