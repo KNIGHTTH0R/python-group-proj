@@ -37,7 +37,7 @@ def user_photos():
 	#check for IG info in session variables
 	if 'instagram_access_token' in session and 'instagram_user' in session:
 		userAPI = InstagramAPI(access_token=session['instagram_access_token'])
-		recent_media, next=userAPI.user_recent_media(user_id=session['instagram_user'].get('id'),count=25)
+		recent_media, next=userAPI.user_recent_media(user_id=session['instagram_user'].get('id'),count=10)
 
 		template_data = {
 			'size' : request.args.get('size', 'thumb'),
@@ -71,13 +71,28 @@ def instagram_callback():
 		session['instagram_access_token'] = access_token
 		session['instagram_user'] = user
 
-		return redirect('/') # redirect back to main page
+		return redirect('/instagram') # redirect back to main page
 
 	else:
 		return "Uhoh no code provided"
-# 
-# @t_app.route('/instagram/mostliked')
-# def most_liked_photo():
+
+@t_app.route('/instagram/mostliked')
+def most_liked_photo():
+	if 'instagram_access_token' in session and 'instagram_user' in session:
+		userAPI = InstagramAPI(access_token=session['instagram_access_token'])
+		recent_media, next=userAPI.media_popular(user_id=session['instagram_user'].get('id'),count=10)
+
+		template_data = {
+			'size' : request.args.get('size', 'thumb'),
+			'media' : recent_media
+		}
+
+		return render_template('layout.html', **template_data)
+
+	else:
+		return redirect('/ig_connect')
+
+
 
 ########################################
 ###  End Instagram Section
