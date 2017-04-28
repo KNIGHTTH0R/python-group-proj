@@ -23,9 +23,16 @@ def index():
 def twitter():
 	return render_template('twitter.html')
 
+	
+'''Facebook Section BEGIN'''	
+	
 @t_app.route('/facebook')
 def facebook():
+
 	return render_template('facebook.html')
+
+'''Facebook Section END'''
+
 
 ########################################
 ###  Instagram Section
