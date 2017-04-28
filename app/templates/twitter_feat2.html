@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>SocialMediaX</title>
+	<style>
+		.dropbtn {
+			background-color: #f1f1f1;
+			color: black;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		.dropdown-content a:hover {background-color: #f1f1f1}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown:hover .dropbtn {
+			background-color: #f1f1f1;
+		}
+  </style>
+  </head>
+  <body> 
+	<h1>SocialMediaX</h1>
+	<h2>Additional features and capabilities for multiple platforms</h2>
+    <h3>
+	  <img src="/static/Twitter_Logo_White_On_Blue.png" alt="Twitter img"
+        style="width:100px;heigh:100px;border:0;">
+	</h3>
+	
+	<div class="dropdown">
+      <button class="dropbtn">Unfollow users who don't follow you back</button>
+      <div class="dropdown-content">
+        <a href="/twitter/twitter_feat3">Find tweets containing specific keyword</a>
+		<a href="/twitter/twitter_feat5">Delete tweets with a specific keyword</a>
+        <a href="/twitter/twitter_feat1">Follow back all followers</a>
+        <a href="/twitter/twitter_feat4">On this day</a>
+      </div>
+    </div>
+	<br />
+	<br />
+	<form action="" method="post">
+			<input type="submit" name="g" value="Go">
+	</form>
+	<br />
+	<br />	
+	{% if names %}
+		<div id="name">Successfully unfollowed these traitors:</div>
+		<form action="" method="post">
+			<input type="submit" name="u" value="Undo"/>
+		</form><br /><br />
+	{% for name in names %}
+		<div id="usr">{{ name }}</div>
+	{% endfor %}
+	{% endif %}
+	
+	{% if refollowed %}
+		<div id="unf">Successfully refollowed users:</div><br /><br />
+		{% for user in refollowed %}
+			<div id="user">{{ user }}</div>
+		{% endfor %}
+	{% endif %}
+	
+
+  </body>
+</html>
