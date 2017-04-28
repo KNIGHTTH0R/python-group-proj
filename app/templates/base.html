@@ -1,28 +1,33 @@
 <html>
+<!-- ================Header==================== -->
   <head>
     <title>SocialMediaX</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/css/master.css"> -->
   </head>
-  <body>
-    <h1>SocialMediaX</h1>
-    <h2>Additional features and capabilities for multiple platforms</h2>
-    {% block content %} {% endblock %}
-    <br />
-    <br />
-    <a href="/twitter">
-      <img src="/static/Twitter_Logo_White_On_Blue.png" alt="Twitter img"
-      style="width:100px;heigh:100px;border:0;">
-    </a>
-    <br />
-    <br />
-    <a href="/facebook">
-      <img src="/static/FB-fLogo-Blue-broadcast-2.png" alt="FB img"
-      style="width:100px;heigh:100px;border:0;">
-    </a>
-    <br />
-    <br />
-    <a href="/instagram">
-      <img src="/static/app-icon2.png" alt="IG img"
-      style="width:100px;heigh:100px;border:0;">
-    </a>
+<!-- ================End=Header================ -->
+<body>
+<!-- ================NavBar for Site=========== -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <a class="navbar-brand">SMX</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/twitter">Twitter</a></li>
+            <li><a href="/facebook">FaceBook</a></li>
+            <li><a href="/instagram">Instagram</a></li>
+          </ul>
+      </nav>
+
+<!-- ================End=Section================ -->
+
+      {% block content %} {% endblock %}
+    </div>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>

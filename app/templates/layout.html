@@ -1,68 +1,95 @@
 {% extends "instagram.html" %}
 
 {% block body %}
-<div class="row">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Instagram</a>
+<head>
+  <style media="text/css">
+  #container {
+   width: 48px;
+   height: 48px;
+  }
+
+  #container img {
+   width: 100%;
+  }
+  </style>
+</head>
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <a class="navbar-brand">SMX</a>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">FaceBook</a></li>
+    <li><a href="/instagram">Instagram</a></li>
+  </ul>
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="nav navbar-nav">
+      <li class="active">
+        {% if size == 'big' %}
+        <a href="/instagram">View thumbnails</a>
+        {% else %}
+        <a href="/instagram?size=big">View large photos</a>
+        {% endif %}
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Home</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    {% for m in media %}
+      {% if size == 'big'%}
+      <div class="container">
+        <div class="col-md-6" align="left">
+          {{m.caption.text}}
+          <small><a href="{{m.link}}">view on instagram</a></small>
+          <!-- <br> -->
+        </div>
+        <div class="col-md-6" id="fit-pic" align="right" object-fit: "scale-down">
+          <img src="{{m.images['standard_resolution'].url}}" alt="{{m.caption.text}}">
+          <!-- <br> -->
+        </div>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav">
-          <li class="active">
-            {% if size == 'big' %}
-              <a href="/instagram">View thumbnails</a>
-            {% else %}
-              <a href="/instagram?size=big">View large photos</a>
-            {% endif %}
-          </li>
-          <li><a href="/instagram/mostliked">View Popular</a></li>
+      <p align="center">
 
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Home</a></li>
-
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-
-
-
-    <hr>
-
-    {% for m in media %}
-
-			{% if size == 'big'%}
-			<p>
-				<img src="{{m.images['standard_resolution'].url}}" alt="{{m.caption.text}}">
-				<br>
-				{{m.caption.text}}
-				<br>
-				<small><a href="{{m.link}}">view on instagram</a></small>
 			</p>
+      {% else %}
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <a href="{{m.link}}" class="thumbnail">
+          <img src="{{m.images['thumbnail'].url}}" alt="{{m.caption.text}}">
+        </a>
+      </div>
+      {% endif %}
+    {% endfor %}
 
-			{% else %}
-
-				<div class="col-sm-6 col-md-2">
-					<a href="{{m.link}}" class="thumbnail">
-						<img src="{{m.images['thumbnail'].url}}" alt="{{m.caption.text}}">
-					</a>
-				</div>
-
-			{% endif %}
-
-		{% endfor %}
-
+  </div>
 </div>
+
+<script type="text/javascript">
+(function() {
+
+  var img = document.getElementById('fit-pic').firstChild;
+  img.onload = function() {
+    if(img.height > img.width) {
+      img.height = '100%';
+      img.width = 'auto';
+    }
+  };
+
+}());
+</script>
+
 {% endblock %}
