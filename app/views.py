@@ -11,8 +11,8 @@ from app import t_app
 
 t_app.secret_key = 'super secret key'
 ig_credentials = {
-    'client_id': "fcf2484c92244827b3bcc23d39a61b16",
-    'client_secret': "086878ff36a148f4aca782c5bc145f99",
+    'client_id': None,
+    'client_secret': None,
     'redirect_uri': "http://localhost:5000/instagram_callback"
 }
 api = InstagramAPI(**ig_credentials)
